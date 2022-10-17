@@ -20,4 +20,3 @@ public class Remove_Element {
         return nums.length - counterVal;
     }
 }
-
