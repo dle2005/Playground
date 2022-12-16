@@ -1,8 +1,10 @@
-import User;
-import UserRepository;
-import UserCreateRequest;
-import UserUpdateRequest;
-import UserResponse;
+package com.group.libraryapp.service.user;
+
+import com.group.libraryapp.domain.user.User;
+import com.group.libraryapp.domain.user.UserRepository;
+import com.group.libraryapp.dto.user.request.UserCreateRequest;
+import com.group.libraryapp.dto.user.request.UserUpdateRequest;
+import com.group.libraryapp.dto.user.response.UserResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

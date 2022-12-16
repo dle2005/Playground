@@ -1,3 +1,5 @@
+package com.group.libraryapp.dto.book.request;
+
 public class BookLoanRequest {
 
   private String userName;

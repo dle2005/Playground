@@ -1,3 +1,5 @@
+package com.group.libraryapp.domain.book;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
