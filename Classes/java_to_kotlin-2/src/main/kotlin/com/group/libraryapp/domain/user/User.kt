@@ -34,7 +34,7 @@ class User constructor(
     }
 
     fun loanBook(book: Book) {
-        this.userLoanHistory.add(UserLoanHistory(this, book.name, false))
+        this.userLoanHistory.add(UserLoanHistory(this, book.name))
     }
 
     fun returnBook(bookName: String) {
