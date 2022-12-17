@@ -50,7 +50,7 @@ class UserServiceTest @Autowired constructor(
         )
 
         // when
-        val result = userService.users
+        val result = userService.getUsers()
 
         // then
         assertAll({
@@ -64,7 +64,7 @@ class UserServiceTest @Autowired constructor(
     fun updateUserNameTest() {
         // given
         val savedUser = userRepository.save(User("A", null))
-        val request = UserUpdateRequest(savedUser.id, "B")
+        val request = UserUpdateRequest(savedUser.id!!, "B")
 
         // when
         userService.updateUserName(request)
