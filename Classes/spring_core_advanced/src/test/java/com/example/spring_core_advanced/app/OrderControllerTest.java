@@ -19,7 +19,7 @@ class OrderControllerTest {
 
     @Test
     public void requestTest() {
-        String result = this.restTemplate.getForObject("/v2/request?itemId=hello", String.class);
+        String result = this.restTemplate.getForObject("/v3/request?itemId=hello", String.class);
 
         assertThat(result).isEqualTo("ok");
     }
