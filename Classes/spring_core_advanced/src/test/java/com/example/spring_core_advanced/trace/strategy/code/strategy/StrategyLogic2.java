@@ -1,4 +1,4 @@
-package com.example.spring_core_advanced.trace.strategy.code;
+package com.example.spring_core_advanced.trace.strategy.code.strategy;
 
 import lombok.extern.slf4j.Slf4j;
 
