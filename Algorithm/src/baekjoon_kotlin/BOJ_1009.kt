@@ -1,4 +1,4 @@
-package Baekjoon_kotlin
+package baekjoon_kotlin
 
 import java.io.BufferedReader
 import java.io.InputStreamReader
