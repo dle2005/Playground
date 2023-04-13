@@ -8,7 +8,7 @@ class MemberServiceImpl : MemberService {
         memberRepository.save(member)
     }
 
-    override fun findMember(memberId: Long): Member? {
+    override fun findMember(memberId: Long): Member {
         return memberRepository.findById(memberId)
     }
 }
