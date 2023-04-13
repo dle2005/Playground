@@ -2,12 +2,12 @@ package com.example.spring_basic
 
 import com.example.spring_basic.member.Grade
 import com.example.spring_basic.member.Member
-import com.example.spring_basic.member.MemberServiceImpl
-import com.example.spring_basic.order.OrderServiceImpl
 
 fun main() {
-    val memberService = MemberServiceImpl()
-    val orderService = OrderServiceImpl()
+    val appConfig = AppConfig()
+
+    val memberService = appConfig.memberService()
+    val orderService = appConfig.oderService()
 
     val memberId = 1L
     val member = Member(memberId, "memberA", Grade.VIP)
