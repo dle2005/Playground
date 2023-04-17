@@ -2,7 +2,9 @@ package com.example.spring_basic.discount
 
 import com.example.spring_basic.member.Grade
 import com.example.spring_basic.member.Member
+import org.springframework.stereotype.Component
 
+@Component
 class FixDiscountPolicy : DiscountPolicy {
 
     private val discountFixAmount = 1000
