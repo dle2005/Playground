@@ -16,21 +16,25 @@ class AppConfig {
 
     @Bean
     fun memberRepository(): MemberRepository {
+        println("call Appconfig.memberRepository")
         return MemoryMemberRepository()
     }
 
     @Bean
     fun discountPolicy(): DiscountPolicy {
+        println("call Appconfig.discountPolicy")
         return FixDiscountPolicy()
     }
 
     @Bean
     fun memberService(): MemberService {
+        println("call Appconfig.memberService")
         return MemberServiceImpl(memberRepository())
     }
 
     @Bean
-    fun oderService(): OrderService {
+    fun orderService(): OrderService {
+        println("call Appconfig.orderService")
         return OrderServiceImpl(memberRepository(), discountPolicy())
     }
 

@@ -2,7 +2,9 @@ package com.example.spring_basic.order
 
 import com.example.spring_basic.discount.DiscountPolicy
 import com.example.spring_basic.member.MemberRepository
+import org.springframework.stereotype.Component
 
+@Component
 class OrderServiceImpl (
     private val memberRepository: MemberRepository,
     private val discountPolicy: DiscountPolicy
@@ -13,5 +15,9 @@ class OrderServiceImpl (
         val discountPrice = discountPolicy.discount(member, itemPrice)
 
         return Order(memberId, itemName, itemPrice, discountPrice)
+    }
+
+    fun getMemberRepository() : MemberRepository {
+        return memberRepository
     }
 }

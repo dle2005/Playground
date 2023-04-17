@@ -1,5 +1,8 @@
 package com.example.spring_basic.member
 
+import org.springframework.stereotype.Component
+
+@Component
 class MemoryMemberRepository : MemberRepository {
 
     companion object {

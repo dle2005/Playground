@@ -4,7 +4,6 @@ import com.example.spring_basic.AppConfig
 import com.example.spring_basic.member.Grade
 import com.example.spring_basic.member.Member
 import com.example.spring_basic.member.MemberService
-import com.example.spring_basic.member.MemberServiceImpl
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -17,7 +16,7 @@ class OrderServiceTest {
     fun beforeEach() {
         val appConfig = AppConfig()
         memberService = appConfig.memberService()
-        orderService = appConfig.oderService()
+        orderService = appConfig.orderService()
     }
 
     @Test

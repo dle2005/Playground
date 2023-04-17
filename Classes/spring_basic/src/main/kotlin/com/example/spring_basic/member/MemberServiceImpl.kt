@@ -1,5 +1,8 @@
 package com.example.spring_basic.member
 
+import org.springframework.stereotype.Component
+
+@Component
 class MemberServiceImpl(
     private val memberRepository: MemberRepository
 ) : MemberService {
@@ -10,5 +13,9 @@ class MemberServiceImpl(
 
     override fun findMember(memberId: Long): Member {
         return memberRepository.findById(memberId)
+    }
+
+    fun getMemberRepository() : MemberRepository {
+        return memberRepository
     }
 }
