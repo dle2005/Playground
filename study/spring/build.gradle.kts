@@ -34,6 +34,11 @@ dependencies {
 
     // feign
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.0.1")
+
+    // coroutine
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
+    runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.6.0")
 }
 
 tasks.withType<Test> {
