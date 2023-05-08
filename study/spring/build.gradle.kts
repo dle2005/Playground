@@ -39,6 +39,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.0")
     runtimeOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.6.0")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-slf4j:1.6.0")
+
+    // webflux
+    implementation("org.springframework.boot:spring-boot-starter-webflux")
+
+    implementation("org.springframework:spring-context")
+
 }
 
 tasks.withType<Test> {
