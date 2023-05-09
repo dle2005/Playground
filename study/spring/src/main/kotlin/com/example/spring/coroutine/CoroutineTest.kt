@@ -3,14 +3,14 @@ package com.example.spring.coroutine
 import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.*
 
-fun main() = runBlocking {
+fun main() {
     val time = measureTimeMillis {
-        callRoutines()
+        callRoutinesAsync()
     }
     println("Total time = ${time}ms")
 }
 
-fun callRoutines() = runBlocking {
+fun callRoutinesLaunch() = runBlocking {
     launch {
         routine1()
     }
@@ -21,6 +21,17 @@ fun callRoutines() = runBlocking {
         routine3()
     }
 }
+
+fun callRoutinesAsync() = runBlocking {
+    val routine1 = async { routine1() }
+    val routine2 = async { routine2() }
+    val routine3 = async { routine3() }
+
+    routine1.await()
+    routine2.await()
+    routine3.await()
+}
+
 
 
 suspend fun routine1() {
