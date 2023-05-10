@@ -6,8 +6,12 @@ plugins {
     id("io.spring.dependency-management") version "1.1.0"
 
     // kotlin plugins
-    kotlin("jvm") version "1.8.20-RC2"
-    kotlin("plugin.spring") version "1.6.21"
+    val kotlinVersion = "1.8.0"
+
+    kotlin("jvm") version kotlinVersion
+    kotlin("plugin.spring") version kotlinVersion
+    kotlin("plugin.jpa") version kotlinVersion
+    kotlin("plugin.noarg") version kotlinVersion
 }
 
 group = "com.example"
@@ -46,6 +50,13 @@ dependencies {
 
     implementation("org.springframework:spring-context")
 
+    // jpa
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+
+    // h2 db
+    runtimeOnly("com.h2database:h2")
+
+    implementation("org.jetbrains.kotlin:kotlin-reflect")
 }
 
 tasks.withType<Test> {
