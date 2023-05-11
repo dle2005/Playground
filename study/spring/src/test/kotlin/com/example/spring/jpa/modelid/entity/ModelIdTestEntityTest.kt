@@ -3,6 +3,7 @@ package com.example.spring.jpa.modelid.entity
 import com.example.spring.jpa.modelid.enum.JpaTestCode
 import com.example.spring.jpa.modelid.model.ModelIdTestModel
 import com.example.spring.jpa.modelid.repository.ModelIdTestRepository
+import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -22,5 +23,31 @@ class ModelIdTestEntityTest @Autowired constructor(
         val retrievedEntity = modelIdTestRepository.findById(testModel).get()
         println(retrievedEntity)
         assertEquals(testModel.value, retrievedEntity.testModel.value)
+    }
+
+    @Test
+    fun defaultValueTest() {
+        val testModel = ModelIdTestModel("12345")
+        val testEntity = ModelIdTestEntity(testModel, JpaTestCode.SUCCESS)
+        modelIdTestRepository.save(testEntity)
+
+        val retrievedEntity = modelIdTestRepository.findById(testModel).get()
+        Assertions.assertThat(retrievedEntity.defaultValue).isEqualTo("default")
+    }
+
+    @Test
+    fun defaultValueTest2() {
+        val testModel = ModelIdTestModel("12345")
+        val testEntity = ModelIdTestEntity(testModel, JpaTestCode.SUCCESS, "not default")
+        modelIdTestRepository.save(testEntity)
+
+        val retrievedEntity = modelIdTestRepository.findById(testModel).get()
+        Assertions.assertThat(retrievedEntity.defaultValue).isEqualTo("not default")
+
+        retrievedEntity.testCode = JpaTestCode.FAIL
+        modelIdTestRepository.save(retrievedEntity)
+
+        val reRetrievedEntity = modelIdTestRepository.findById(testModel).get()
+        Assertions.assertThat(reRetrievedEntity.defaultValue).isEqualTo("not default")
     }
 }

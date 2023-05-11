@@ -4,6 +4,8 @@ import com.example.spring.jpa.modelid.enum.JpaTestCode
 import com.example.spring.jpa.modelid.enum.JpaTestCodeConverter
 import com.example.spring.jpa.modelid.model.ModelIdTestModel
 import jakarta.persistence.*
+import org.hibernate.annotations.CreationTimestamp
+import java.time.LocalDateTime
 
 @Entity
 data class ModelIdTestEntity(
@@ -13,5 +15,11 @@ data class ModelIdTestEntity(
 
     @Convert(converter = JpaTestCodeConverter::class)
     @Column(name = "TEST_CODE", length = 4)
-    val testCode: JpaTestCode,
+    var testCode: JpaTestCode,
+
+    var defaultValue: String = "default",
+
+    @CreationTimestamp
+    @Column(name = "CREATED_DATETIME", nullable = false, updatable = false)
+    val createdAt: LocalDateTime = LocalDateTime.now()
 )

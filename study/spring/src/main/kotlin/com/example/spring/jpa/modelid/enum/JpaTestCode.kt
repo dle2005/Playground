@@ -7,7 +7,8 @@ enum class JpaTestCode(
     val code: String,
     val description: String,
 ) {
-    SUCCESS("0000", "정상")
+    SUCCESS("0000", "정상"),
+    FAIL("9999", "비정상")
 }
 
 @Converter(autoApply = true)
