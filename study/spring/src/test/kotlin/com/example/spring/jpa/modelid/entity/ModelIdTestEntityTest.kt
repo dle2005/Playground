@@ -17,10 +17,11 @@ class ModelIdTestEntityTest @Autowired constructor(
     @Test
     fun testEntityPersistence() {
         val testModel = ModelIdTestModel("12345")
-        val testEntity = ModelIdTestEntity(testModel, JpaTestCode.SUCCESS)
+        val multiId = MultiId(testModel, "test")
+        val testEntity = ModelIdTestEntity(testModel, "test", JpaTestCode.SUCCESS)
         modelIdTestRepository.save(testEntity)
 
-        val retrievedEntity = modelIdTestRepository.findById(testModel).get()
+        val retrievedEntity = modelIdTestRepository.findById(multiId).get()
         println(retrievedEntity)
         assertEquals(testModel.value, retrievedEntity.testModel.value)
     }
@@ -28,26 +29,28 @@ class ModelIdTestEntityTest @Autowired constructor(
     @Test
     fun defaultValueTest() {
         val testModel = ModelIdTestModel("12345")
-        val testEntity = ModelIdTestEntity(testModel, JpaTestCode.SUCCESS)
+        val multiId = MultiId(testModel, "test")
+        val testEntity = ModelIdTestEntity(testModel, "test", JpaTestCode.SUCCESS)
         modelIdTestRepository.save(testEntity)
 
-        val retrievedEntity = modelIdTestRepository.findById(testModel).get()
+        val retrievedEntity = modelIdTestRepository.findById(multiId).get()
         Assertions.assertThat(retrievedEntity.defaultValue).isEqualTo("default")
     }
 
     @Test
     fun defaultValueTest2() {
         val testModel = ModelIdTestModel("12345")
-        val testEntity = ModelIdTestEntity(testModel, JpaTestCode.SUCCESS, "not default")
+        val multiId = MultiId(testModel, "test")
+        val testEntity = ModelIdTestEntity(testModel, "test", JpaTestCode.SUCCESS, "not default")
         modelIdTestRepository.save(testEntity)
 
-        val retrievedEntity = modelIdTestRepository.findById(testModel).get()
+        val retrievedEntity = modelIdTestRepository.findById(multiId).get()
         Assertions.assertThat(retrievedEntity.defaultValue).isEqualTo("not default")
 
         retrievedEntity.testCode = JpaTestCode.FAIL
         modelIdTestRepository.save(retrievedEntity)
 
-        val reRetrievedEntity = modelIdTestRepository.findById(testModel).get()
+        val reRetrievedEntity = modelIdTestRepository.findById(multiId).get()
         Assertions.assertThat(reRetrievedEntity.defaultValue).isEqualTo("not default")
     }
 }
