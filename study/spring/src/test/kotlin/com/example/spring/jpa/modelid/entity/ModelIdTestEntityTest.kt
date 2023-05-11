@@ -1,5 +1,6 @@
 package com.example.spring.jpa.modelid.entity
 
+import com.example.spring.jpa.modelid.enum.JpaTestCode
 import com.example.spring.jpa.modelid.model.ModelIdTestModel
 import com.example.spring.jpa.modelid.repository.ModelIdTestRepository
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -15,10 +16,11 @@ class ModelIdTestEntityTest @Autowired constructor(
     @Test
     fun testEntityPersistence() {
         val testModel = ModelIdTestModel("12345")
-        val testEntity = ModelIdTestEntity(testModel)
+        val testEntity = ModelIdTestEntity(testModel, JpaTestCode.SUCCESS)
         modelIdTestRepository.save(testEntity)
 
         val retrievedEntity = modelIdTestRepository.findById(testModel).get()
+        println(retrievedEntity)
         assertEquals(testModel.value, retrievedEntity.testModel.value)
     }
 }
