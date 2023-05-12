@@ -2,6 +2,7 @@ package com.example.spring.jpa.modelid.entity
 
 import com.example.spring.jpa.modelid.enum.JpaTestCode
 import com.example.spring.jpa.modelid.enum.JpaTestCodeConverter
+import com.example.spring.jpa.modelid.enum.JpaTestCodeConverter2
 import com.example.spring.jpa.modelid.model.ModelIdTestModel
 import jakarta.persistence.*
 import org.hibernate.annotations.CreationTimestamp
@@ -17,9 +18,9 @@ data class ModelIdTestEntity(
     @Id
     val multiId: String,
 
-    @Convert(converter = JpaTestCodeConverter::class)
+    @Convert(converter = JpaTestCodeConverter2::class)
     @Column(name = "TEST_CODE", length = 4)
-    var testCode: JpaTestCode,
+    var testCode: JpaTestCode? = null,
 
     var defaultValue: String = "default",
 

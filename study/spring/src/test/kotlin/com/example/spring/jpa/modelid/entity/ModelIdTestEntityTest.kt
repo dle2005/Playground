@@ -18,7 +18,7 @@ class ModelIdTestEntityTest @Autowired constructor(
     fun testEntityPersistence() {
         val testModel = ModelIdTestModel("12345")
         val multiId = MultiId(testModel, "test")
-        val testEntity = ModelIdTestEntity(testModel, "test", JpaTestCode.SUCCESS)
+        val testEntity = ModelIdTestEntity(testModel, "test")
         modelIdTestRepository.save(testEntity)
 
         val retrievedEntity = modelIdTestRepository.findById(multiId).get()
