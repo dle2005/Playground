@@ -1,0 +1,7 @@
+### test
+POST http://localhost:8080/model_filed_test/req
+Content-Type: application/json
+
+{
+  "model" : "test"
+}
