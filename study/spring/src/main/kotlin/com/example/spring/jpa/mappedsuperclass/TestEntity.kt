@@ -8,7 +8,7 @@ import jakarta.persistence.Id
 @Entity
 data class TestEntity(
     var str: String = "",
-) : BaseTimeEntity() {
+) : Auditing() {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0
