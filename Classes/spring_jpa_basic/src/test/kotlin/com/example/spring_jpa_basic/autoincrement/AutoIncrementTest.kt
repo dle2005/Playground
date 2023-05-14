@@ -32,4 +32,12 @@ internal class AutoIncrementTest @Autowired constructor(
         assertThat(savedEntity1.id).isEqualTo(1)
         assertThat(savedEntity2.id).isEqualTo(2)
     }
+
+    @Test
+    fun id생성타이밍확인() {
+        val entity = TestEntity()
+        val savedEntity = testRepository.save(entity)
+        // save시점에 insert query 생성
+        println("====insert query 확인용 출력====")
+    }
 }
